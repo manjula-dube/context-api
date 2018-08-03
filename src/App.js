@@ -14,17 +14,12 @@ class MyProvider extends Component {
   render(){
     return(
     <myContext.Provider value={
-      {state: this.state,
-       growAYearOlder: () => this.setState({
-         age: this.state.age + 1
-       }) 
-      }}>
+      {state: this.state}}>
       {this.props.children}
     </myContext.Provider>
     )
   }
 }
-
 
 const Family = (props) => (
   <div className= "family">
@@ -38,11 +33,7 @@ class Person extends Component {
       <div className="person">
          <myContext.Consumer>
          {(context) => (
-          <React.Fragment>
-            <p> Name: {context.state.name} </p>
-            <p> Age: {context.state.age} </p>
-            <button onClick={context.growAYearOlder}>update</button>
-          </React.Fragment>
+            <p> I am {context.state.name} </p>
          )}
          </myContext.Consumer>
       </div>
